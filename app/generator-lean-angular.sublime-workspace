@@ -1,0 +1,943 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"modu",
+				"modulesNames"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/home/lukasz/projects/generator-lean-angular/package.json",
+			"settings":
+			{
+				"buffer_size": 162,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.js",
+			"settings":
+			{
+				"buffer_size": 739,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/lukasz/projects/generator-lean-angular/templates/index.html",
+			"settings":
+			{
+				"buffer_size": 65,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 369.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"case",
+				"Convert Case: Lower Case"
+			],
+			[
+				"drms",
+				"Table Editor: Set table syntax 'MultiMarkdown' for current view"
+			],
+			[
+				"table",
+				"Table Editor: Enable for current syntax"
+			],
+			[
+				"tableset",
+				"Table Editor: Set table syntax 'Simple' for current view"
+			],
+			[
+				"tablset",
+				"Table Editor: Set table syntax 'Simple' for current view"
+			],
+			[
+				"tablee",
+				"Table Editor: Disable for current syntax"
+			]
+		],
+		"width": 602.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/lukasz/projects/generator-lean-angular",
+		"/home/lukasz/projects/generator-lean-angular/app"
+	],
+	"file_history":
+	[
+		"/home/lukasz/projects/generator-lean-angular/app/generator-lean-angular.sublime-project",
+		"/home/lukasz/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/lukasz/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/lukasz/projects/repos-stats/src/style/main.scss",
+		"/home/lukasz/projects/repos-stats/src/app/partials/main-footer/main-footer.html",
+		"/home/lukasz/projects/repos-stats/src/app/lib/request-data/requestData.js",
+		"/home/lukasz/projects/repos-stats/web/dev/js/main.js",
+		"/home/lukasz/projects/repos-stats/bower.json",
+		"/home/lukasz/projects/repos-stats/src/app/partials/main-header/main-header.html",
+		"/home/lukasz/projects/repos-stats/src/app/partials/repos-table-area/ReposTableAreaCtrl.js",
+		"/home/lukasz/projects/repos-stats/src/app/partials/repos-charts-area/ReposChartsAreaCtrl.js",
+		"/home/lukasz/projects/repos-stats/src/app/lib/charts-store/chartsStore.js",
+		"/home/lukasz/projects/repos-stats/src/app/AppCtrl.js",
+		"/home/lukasz/projects/repos-stats/src/app/partials/repos-charts-area/repos-charts-area.html",
+		"/home/lukasz/projects/repos-stats/src/app/partials/repos-table-area/repos-table-area.html",
+		"/home/lukasz/projects/repos-stats/src/app/lib/stats-config/statsConfig.js",
+		"/home/lukasz/projects/repos-stats/src/app/partials/main-header/mainHeader.js",
+		"/home/lukasz/projects/repos-stats/src/app/lib/repos-store/reposStore.js",
+		"/home/lukasz/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/lukasz/projects/repos-stats/.gitignore",
+		"/home/lukasz/projects/repos-stats/src/app/partials/main-header/MainHeaderCtrl.js",
+		"/home/lukasz/projects/repos-stats/src/style/_table-1.scss",
+		"/home/lukasz/projects/repos-stats/src/style/_faq-area.scss",
+		"/home/lukasz/projects/repos-stats/src/style/_reset.scss",
+		"/home/lukasz/projects/repos-stats/src/style/_request-repos-form-submit-area.scss",
+		"/home/lukasz/projects/repos-stats/src/style/_charts-area.scss",
+		"/home/lukasz/projects/repos-stats/src/style/_footer-area.scss",
+		"/home/lukasz/projects/repos-stats/src/app/partials/main-footer/mainFooter.js",
+		"/home/lukasz/projects/repos-stats/web/dev/index.html",
+		"/home/lukasz/projects/repos-stats/src/app/partials/repos-table-area/reposTableArea.js",
+		"/home/lukasz/projects/repos-stats/src/app/partials/repos-charts-area/reposChartsArea.js",
+		"/home/lukasz/projects/repos-stats/src/app/partials/main-footer/mainFooterModule.js",
+		"/home/lukasz/projects/repos-stats/src/generatorTemplates/component/directive.js",
+		"/home/lukasz/projects/repos-stats/src/generatorTemplates/component/module.js",
+		"/home/lukasz/projects/repos-stats/src/app/appModule.js",
+		"/home/lukasz/projects/repos-stats/src/generatorTemplates/component/controller.js",
+		"/home/lukasz/projects/repos-stats/src/generatorTemplates/component/style.scss",
+		"/home/lukasz/projects/repos-stats/src/generatorTemplates/component/template.html",
+		"/home/lukasz/projects/repos-stats/src/app/app.js",
+		"/home/lukasz/projects/repos-stats/src/assets.yml",
+		"/home/lukasz/projects/repos-stats/src/app/UserRecentRequests.js",
+		"/home/lukasz/projects/repos-stats/src/app/Repo.js",
+		"/home/lukasz/projects/repos-stats/src/app/RateLimit.js",
+		"/home/lukasz/projects/repos-stats/package.json",
+		"/home/lukasz/projects/repos-stats/src/app/app.module.js",
+		"/home/lukasz/SpiderOak Hive/PRIV/wo/wo-x-dr.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/mvs/mvs-wtchd.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/projects-dev/ng-structure/ng-structure-sample.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/projects-dev/ng-structure/code.js",
+		"/home/lukasz/SpiderOak Hive/PRIV/gtr/../projects-dev/ng-structure/console.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/mvs/mvs-todl.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/mvs/mvs-tow.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/mvs/mvs-dates.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/mvs/tvs-wtchd.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/projects-dev/ng-structure/test.jsx",
+		"/home/lukasz/SpiderOak Hive/PRIV/projects/socketio-test/mvps.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/projects/gtr-fb/mvps.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/projects/gtr-fb/ideas.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/projects/gtr-fb/readme.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/projects/gtr-fb/todo.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/projects/gtr-fb/pitches.js",
+		"/home/lukasz/SpiderOak Hive/PRIV/ng-structure/ng-structure-sample.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/ng-structure/ng-structure.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/ng-structure/ng-structure-tasks.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/urlop.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/books.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/code/recursion.js",
+		"/home/lukasz/SpiderOak Hive/PRIV/mvs/tvs-rates.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/ebr/ebr-chrg.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/gtr/gtr-lrn.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/media.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/mvs/tvs-todl.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/projects/gtr-fb/dev.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/savings.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/buy/tob.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/pw.md",
+		"/home/lukasz/.pulse/client.conf",
+		"/home/lukasz/SpiderOak Hive/PRIV/gtr/tabs.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/gtr/record.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/mb.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/mood.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/ebr/ebr-prg.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/ideas/projects.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/tabs/Pantera - Cowboys From Hell (Pro).gp3",
+		"/home/lukasz/SpiderOak Hive/PRIV/msc.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/wo/wo-msr.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/wo/wo-wght.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/hgn.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/wo/wo-fd-dr.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/drms/drms.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/schdl.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/archive/../buy/hostings.md",
+		"/home/lukasz/.bash_profile",
+		"/home/lukasz/.bashrc",
+		"/home/lukasz/.gitconfig",
+		"/home/lukasz/SpiderOak Hive/PRIV/buy/buty.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/wo/wo-dr.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/wo/wo-dr2.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/tabs.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/mvs/mvs-int.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/calc.ods",
+		"/home/lukasz/SpiderOak Hive/PRIV/months.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/mvs/wtchd-tv.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/gtr/gtr-tob.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/gtr.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/buy/gtr.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/drms.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/flat/flat-visits.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/buy/glsnk.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/dates.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/wo/wo-xrcs.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/wn.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/temp/internet-email.md",
+		"/home/lukasz/SpiderOak Hive/PRIV/temp.txt",
+		"/home/lukasz/SpiderOak Hive/PRIV/wo/wo-ntrtn.md",
+		"/home/lukasz/.config/sublime-text-3/Packages/Table Editor/README.md",
+		"/home/lukasz/.config/sublime-text-3/Packages/User/trailing_spaces.sublime-settings",
+		"/home/lukasz/SpiderOak Hive/PRIV/laptop_bu.md",
+		"/home/lukasz/.mozilla/firefox/mwad0hks.default/sessionstore.js",
+		"/home/lukasz/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
+		"/home/lukasz/SpiderOak Hive/PRIV/configs/trailing_spaces.sublime-settings",
+		"/home/lukasz/.config/sublime-text-3/Packages/TrailingSpaces/trailing_spaces.sublime-settings",
+		"/home/lukasz/SpiderOak Hive/PRIV/configs/Package Control.sublime-settings",
+		"/home/lukasz/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
+		"/home/lukasz/SpiderOak Hive/PRIV/configs/Preferences.sublime-settings",
+		"/home/lukasz/SpiderOak Hive/PRIV/mbl-chrg.md"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"src/",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"name",
+			"'",
+			"setRepos",
+			"loadRepoStats",
+			"conso",
+			"makeRequest",
+			"err,",
+			"callback",
+			"loadRateLimit",
+			"loadRepoStats",
+			"loadRateLimit",
+			"loadRepoStats",
+			"repoName",
+			"loadRepoStats",
+			"data",
+			"makeRequest",
+			"loadRateLimit",
+			"requestData.rateLimit.searchLimit",
+			"val",
+			"requestData.rateLimit",
+			"requestData.rateLimit.searchLimit",
+			"requestData.rateLimit",
+			"reposStore",
+			"rateLimit",
+			"requestData",
+			"$scope.rateLimit",
+			"rateLimit",
+			"globalRecentComparisons",
+			"char-container",
+			"\">",
+			"ate\">",
+			"repoStore",
+			"statsConfig",
+			"charts",
+			"repos",
+			"Repos",
+			"repos",
+			"setRepos",
+			"reposStore.reposNames",
+			".setRepos = function(repos) {\n    reposStore.reposNames",
+			"reposStore.reposNames",
+			"obtainReposNamesCount",
+			"reposNamesCount",
+			"obtain",
+			"$scope.repos",
+			"$scope.reposNames",
+			"$scope.repoSortOrder",
+			"$scope.reposNamesCount",
+			"$scope.reposNames",
+			"$scope.repoS",
+			"$scope.repos",
+			"$scope.",
+			"reposNames",
+			"    $scope.reposNames",
+			"$scope.repoS",
+			"$scope.repos",
+			"\"",
+			"repos",
+			"loadRepoStats",
+			"makeRequest",
+			"$http",
+			"^",
+			"5",
+			"bab",
+			"scope",
+			"$scope.charts",
+			"charts",
+			"                  $scope.charts",
+			"$scope.charts",
+			"$scope.stats",
+			"stats",
+			"$scope.stats",
+			"o",
+			"cb",
+			"fff",
+			"f",
+			"ff",
+			"f",
+			"asgkksoggoksd",
+			"definition",
+			"request-repos-form-submit-area-limit-info-area",
+			"request-repos-form-submit-area-content",
+			"charts-area",
+			"stats",
+			"RateLimit",
+			"rateLimit",
+			"RateLimit",
+			"rateLimit",
+			"globalRecentComparisons",
+			"stats",
+			"charts",
+			"loadRateLimit",
+			"globalRecentComparisons",
+			"obtainLink",
+			"loadContributors",
+			"loadRateLimit",
+			"loadContributors",
+			"loadRepoStats",
+			"obtainReposNamesCount",
+			"obtainLink",
+			"stats",
+			"obtainReposNamesCount",
+			"makeRequest",
+			"loadRateLimit",
+			"globalRecentComparisons",
+			"loadStats",
+			"loadStatsByForm",
+			"loadStats",
+			"makeRequest",
+			"obtainLink",
+			"setRepos",
+			"$scope.requestReposForm.errors.requests",
+			"connectionError",
+			"app.mainFooter",
+			"partials/repos-table-area/repos-table-area.html",
+			"main-footer/main-footer.html",
+			"app.mainFooter",
+			"generateComponent",
+			"getFullPath",
+			"src/sass",
+			"'",
+			"MainController",
+			"fireba",
+			"app",
+			"// ",
+			"assets.yaml",
+			"yaml",
+			"  // "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/home/lukasz/projects/generator-lean-angular/package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 162,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								148,
+								148
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 739,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								682,
+								682
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/lukasz/projects/generator-lean-angular/templates/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 65,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								65,
+								65
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 112.0
+	},
+	"pinned_build_system": "",
+	"project": "generator-lean-angular.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"main",
+				"web/dev/js/main.js"
+			],
+			[
+				"bowe",
+				"bower.json"
+			],
+			[
+				"header",
+				"src/app/partials/main-header/main-header.html"
+			],
+			[
+				"app",
+				"src/app/appModule.js"
+			],
+			[
+				"packa",
+				"package.json"
+			],
+			[
+				"gulp",
+				"gulpfile.js"
+			],
+			[
+				"giti",
+				".gitignore"
+			],
+			[
+				"bower",
+				"bower.json"
+			],
+			[
+				"wox",
+				"wo/wo-x-dr.md"
+			],
+			[
+				"wodr",
+				"wo/wo-x-dr.md"
+			],
+			[
+				"tow",
+				"mvs/mvs-tow.md"
+			],
+			[
+				"todl",
+				"mvs/mvs-todl.md"
+			],
+			[
+				"mvswth",
+				"mvs/mvs-wtchd.md"
+			],
+			[
+				"mvsdat",
+				"mvs/mvs-dates.md"
+			],
+			[
+				"tvs",
+				"mvs/tvs-wtchd.md"
+			],
+			[
+				"mvstow",
+				"mvs/mvs-tow.md"
+			],
+			[
+				"url",
+				"urlop.md"
+			],
+			[
+				"woxdr",
+				"wo/wo-x-dr.md"
+			],
+			[
+				"books",
+				"books.md"
+			],
+			[
+				"mvsda",
+				"mvs/mvs-dates.md"
+			],
+			[
+				".js",
+				"code/recursion.js"
+			],
+			[
+				"mvdat",
+				"mvs/mvs-dates.md"
+			],
+			[
+				"gtrlr",
+				"gtr/gtr-lrn.md"
+			],
+			[
+				"ebrc",
+				"ebr/ebr-chrg.md"
+			],
+			[
+				"media",
+				"media.md"
+			],
+			[
+				"mvtodl",
+				"~/SpiderOak Hive/PRIV/mvs/mvs-todl.md"
+			],
+			[
+				"wowr",
+				"wo/wo-x-dr.md"
+			],
+			[
+				"mvda",
+				"mvs/mvs-dates.md"
+			],
+			[
+				"mvs",
+				"mvs/mvs-todl.md"
+			],
+			[
+				"dates",
+				"mvs/mvs-dates.md"
+			],
+			[
+				"date",
+				"mvs/mvs-dates.md"
+			],
+			[
+				"pw",
+				"pw.md"
+			],
+			[
+				"tob",
+				"buy/tob.md"
+			],
+			[
+				"sav",
+				"savings.md"
+			],
+			[
+				"pith",
+				"projects/gtr-fb/pitches.js"
+			],
+			[
+				"tabs",
+				"gtr/tabs.md"
+			],
+			[
+				"wo",
+				"wo/wo-x-dr.md"
+			],
+			[
+				"mb",
+				"mb.md"
+			],
+			[
+				"mood",
+				"mood.md"
+			],
+			[
+				"pro",
+				"ideas/projects.md"
+			],
+			[
+				"tv",
+				"mvs/tvs-todl.md"
+			],
+			[
+				"ebrpr",
+				"ebr/ebr-prg.md"
+			],
+			[
+				"ebrprog",
+				"tabs/Pantera - Cowboys From Hell (Pro).gp3"
+			],
+			[
+				"ebrchr",
+				"ebr/ebr-chrg.md"
+			],
+			[
+				"ebr",
+				"ebr/ebr-prg.md"
+			],
+			[
+				"msc",
+				"msc.md"
+			],
+			[
+				"wgh",
+				"wo/wo-wght.md"
+			],
+			[
+				"msr",
+				"wo/wo-msr.md"
+			],
+			[
+				"ebpr",
+				"ebr/ebr-prg.md"
+			],
+			[
+				"ebrp",
+				"ebr/ebr-prg.md"
+			],
+			[
+				"hg",
+				"hgn.md"
+			],
+			[
+				"eb",
+				"ebr/ebr-prg.md"
+			],
+			[
+				"drm",
+				"drms/drms.md"
+			],
+			[
+				"wod",
+				"wo/wo-fd-dr.md"
+			],
+			[
+				"drms",
+				"drms/drms.md"
+			],
+			[
+				"mvdate",
+				"mvs/mvs-dates.md"
+			],
+			[
+				"woddr",
+				"wo/wo-x-dr.md"
+			],
+			[
+				"schd",
+				"schdl.md"
+			],
+			[
+				"woxd",
+				"wo/wo-x-dr.md"
+			],
+			[
+				"lrnm",
+				"gtr/gtr-lrn.md"
+			],
+			[
+				"ebprp",
+				"tabs/Pantera - Cowboys From Hell (Pro).gp3"
+			],
+			[
+				"wodr2",
+				"wo/wo-dr2.md"
+			],
+			[
+				"mvsi",
+				"mvs/mvs-int.md"
+			],
+			[
+				"calc",
+				"calc.ods"
+			],
+			[
+				"month",
+				"months.md"
+			],
+			[
+				"mvsin",
+				"mvs/mvs-int.md"
+			],
+			[
+				"wg",
+				"wo/wo-wght.md"
+			],
+			[
+				"mvdates",
+				"mvs/mvs-dates.md"
+			],
+			[
+				"wtch",
+				"mvs/mvs-wtchd.md"
+			],
+			[
+				"gtb",
+				"gtr/gtr-tob.md"
+			],
+			[
+				"ebchr",
+				"ebr/ebr-chrg.md"
+			],
+			[
+				"wthc",
+				"mvs/mvs-wtchd.md"
+			],
+			[
+				"gtr",
+				"buy/gtr.md"
+			],
+			[
+				"mvsw",
+				"mvs/mvs-wtchd.md"
+			],
+			[
+				"epr",
+				"ebr/ebr-prg.md"
+			],
+			[
+				"flavs",
+				"flat/flat-visits.md"
+			],
+			[
+				"flav",
+				"flat/flat-visits.md"
+			],
+			[
+				"mvsto",
+				"mvs/mvs-todl.md"
+			],
+			[
+				"word",
+				"wo/wo-dr.md"
+			],
+			[
+				"wow",
+				"wo/wo-wght.md"
+			],
+			[
+				"medi",
+				"media.md"
+			],
+			[
+				"tempmd",
+				"temp/internet-email.md"
+			],
+			[
+				"temp",
+				"temp.txt"
+			],
+			[
+				"flvis",
+				"flat/flat-visits.md"
+			],
+			[
+				"womsr",
+				"wo/wo-msr.md"
+			],
+			[
+				"wontr",
+				"wo/wo-ntrtn.md"
+			],
+			[
+				"bu",
+				"laptop_bu.md"
+			],
+			[
+				"sublie",
+				"configs/trailing_spaces.sublime-settings"
+			],
+			[
+				"subl",
+				"configs/Package Control.sublime-settings"
+			],
+			[
+				"chrg",
+				"mbl-chrg.md"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 295.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

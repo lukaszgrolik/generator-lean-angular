@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-controller="AppCtrl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- @todo -->
+    <title>title</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/vendor<%- "\<\%= env === 'prod' ? '.min' : '' \%\>" %>.css">
+    <link rel="stylesheet" href="css/main<%- "\<\%= env === 'prod' ? '.min' : '' \%\>" %>.css">
+  </head>
+
+  <body>
+
+    <script src="js/vendor<%- "\<\%= env === 'prod' ? '.min' : '' \%\>" %>.js"></script>
+    <script src="js/main<%- "\<\%= env === 'prod' ? '.min' : '' \%\>" %>.js"></script>
+
+  </body>
+</html>

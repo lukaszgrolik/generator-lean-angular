@@ -1,0 +1,8 @@
+{
+  "name": "<%= name %>",
+  "dependencies": {
+    "angular": "1.4.3",
+    "font-awesome": "4.3.0",
+    "moment": "2.10.3"
+  }
+}

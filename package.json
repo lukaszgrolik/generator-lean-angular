@@ -1,0 +1,10 @@
+{
+  "name": "generator-lean-angular",
+  "keywords": [
+
+  ],
+  "dependencies": {
+    "extend": "3.0.0",
+    "yeoman-generator": "0.20.2"
+  }
+}
