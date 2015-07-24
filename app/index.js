@@ -4,21 +4,8 @@ var extend = require('extend');
 var answers = {};
 
 module.exports = generators.Base.extend({
-  // The name `constructor` is important here
   constructor: function () {
-    // Calling the super constructor is important so our generator is correctly set up
     generators.Base.apply(this, arguments);
-
-    // Next, add your custom code
-    this.option('coffee'); // This method adds support for a `--coffee` flag
-  },
-
-  method1: function () {
-    console.log('method 1 just ran');
-  },
-
-  method2: function () {
-    console.log('method 2 just ran');
   },
 
   prompting: function () {
@@ -76,31 +63,13 @@ module.exports = generators.Base.extend({
     var done = this.async();
 
     this.prompt(prompts, function(data) {
-      // this.log(answers);
       extend(answers, data);
 
       done();
     }.bind(this));
-
-    // prompts.forEach(function(prompt) {
-    //   var done = this.async();
-
-    //   this.prompt({
-    //     name: prompt.name,
-    //     type: prompt.type,
-    //     message: prompt.name,
-    //     default: prompt.default,
-    //   }, function(data) {
-    //     // this.log(answers);
-    //     extend(answers, data);
-
-    //     done();
-    //   }.bind(this));
-    // }.bind(this));
   },
 
   writing: function () {
-    // var _this = this;
     var templates = [
       '.gitignore',
       'bower.json',
@@ -119,7 +88,15 @@ module.exports = generators.Base.extend({
       'src/style/main.scss',
     ];
 
-    // console.log('answers', answers)
+    this.composeWith('lean-angular:add', {
+      options: {
+        add: {
+          paramCaseName: 'error-404-page',
+          path: 'views/',
+          type: 'view',
+        },
+      },
+    });
 
     templates.forEach(function(template) {
       this.fs.copyTpl(
