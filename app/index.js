@@ -25,7 +25,6 @@ module.exports = generators.Base.extend({
     var prompts = [
       {
         name: 'name',
-        // type: 'input',
         message: 'name',
         default: this.appname,
       },
@@ -40,6 +39,16 @@ module.exports = generators.Base.extend({
         type: 'confirm',
         message: 'wrapAppFiles',
         default: true,
+      },
+      {
+        name: 'devServerPort',
+        message: 'devServerPort',
+        default: 3000,
+      },
+      {
+        name: 'prodServerPort',
+        message: 'devServerPort',
+        default: 3001,
       },
       {
         name: 'vendors',

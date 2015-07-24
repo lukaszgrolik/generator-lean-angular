@@ -60,7 +60,7 @@ tasks.livereload = function() {
 }
 
 tasks.buildDevIndex = function() {
-  return gulp.src('src/base-index.html')
+  return gulp.src('src/index.html')
   .pipe(gp.plumber())
   .pipe(gp.rename('index.html'))
   .pipe(gp.template({
@@ -73,7 +73,7 @@ tasks.buildDevIndex = function() {
 tasks.buildProdIndex = function() {
   // var assets = gp.useref.assets();
 
-  return gulp.src('src/base-index.html')
+  return gulp.src('src/index.html')
   .pipe(gp.plumber())
   .pipe(gp.rename('index.html'))
   .pipe(gp.template({
@@ -103,7 +103,7 @@ tasks.buildAngularTemplates = function() {
 }
 
 tasks.buildAngularModules = function() {
-  return gulp.src(['src/app/**/*.js'])
+  return gulp.src('src/app/**/*.js')
   .pipe(gp.angularModules('app-modules.js', {
     name: 'app.modules',
   }))
@@ -244,7 +244,7 @@ tasks.buildVendorJs = function(cb) {
 var buildCoreJsScripts = [
   paths.buildTemp + '/app-templates.js',
   paths.buildTemp + '/app-modules.js',
-  'src/app/**/*Module.js',
+  'src/app/**/*.module.js',
   'src/app/**/*.js',
 ];
 var jsWrapCode = "(function() {\n\n<%- "\<\%= contents \%\>" %>\n\n}());";
@@ -282,6 +282,13 @@ tasks.buildCoreJs = function(cb) {
     cb
   );
 };
+
+tasks.copyToWeb = function() {
+  return gulp.src('src/copy/**/*')
+  .pipe(gp.plumber())
+  .pipe(gulp.dest('web/dev'))
+  .pipe(gulp.dest('web/prod'));
+}
 
 //
 //
@@ -376,6 +383,8 @@ gulp.task('buildCoreCss', tasks.buildCoreCss);
 gulp.task('buildVendorJs', tasks.buildVendorJs);
 gulp.task('buildCoreJs', tasks.buildCoreJs);
 
+gulp.task('copyToWeb', tasks.copyToWeb);
+
 gulp.task('removeAnnotations', tasks.removeAnnotations);
 gulp.task('generateComponent', tasks.generateComponent);
 
@@ -391,7 +400,7 @@ gulp.task('watch', function() {
     'buildVendorCss',
     'buildVendorJs',
   ]);
-  gulp.watch('src/base-index.html', {interval: 500}, [
+  gulp.watch('src/index.html', {interval: 500}, [
     'buildDevIndex',
     'buildProdIndex'
   ]);
@@ -403,6 +412,7 @@ gulp.task('watch', function() {
     'buildProdCoreCss',
     'buildCoreJs',
   ]);
+  gulp.watch('src/copy/**/*', {interval: 500}, ['copyToWeb']);
   // gulp.watch('web/**/*.{html,css,js}', ['livereload'])
 });
 
@@ -414,6 +424,7 @@ gulp.task('build', [
   'buildVendorJs',
   'buildCoreCss',
   'buildCoreJs',
+  'copyToWeb',
 ]);
 gulp.task('server', function(cb) {
   runSequence(
