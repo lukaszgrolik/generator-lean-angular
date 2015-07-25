@@ -75,7 +75,7 @@ module.exports = generators.Base.extend({
       'src/style/_config.scss',
       'src/style/_reset.scss',
       'src/style/_temp.scss',
-      'src/style/main.scss',
+      'src/style/app.scss',
     ];
 
     this.composeWith('lean-angular:add', {
