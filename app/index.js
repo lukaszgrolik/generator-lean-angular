@@ -12,38 +12,39 @@ module.exports = generators.Base.extend({
   },
 
   prompting: function () {
+    var defaultName = process.cwd().split('/').reverse()[0];
     var prompts = [
       {
         name: 'name',
-        message: 'name',
-        default: this.appname,
-      },
-      {
-        name: 'useBabel',
-        type: 'confirm',
-        message: 'useBabel',
-        default: false,
-      },
-      {
-        name: 'wrapAppFiles',
-        type: 'confirm',
-        message: 'wrapAppFiles',
-        default: true,
+        message: 'App name',
+        default: defaultName,
       },
       {
         name: 'devServerPort',
-        message: 'devServerPort',
+        message: 'Development server port',
         default: 3000,
       },
       {
         name: 'prodServerPort',
-        message: 'devServerPort',
+        message: 'Production server port',
         default: 3001,
       },
       {
+        name: 'useBabel',
+        type: 'confirm',
+        message: 'Use Babel.js?',
+        default: false,
+      },
+      // {
+      //   name: 'wrapAppFiles',
+      //   type: 'confirm',
+      //   message: 'wrapAppFiles',
+      //   default: true,
+      // },
+      {
         name: 'vendors',
         type: 'checkbox',
-        message: 'vendors',
+        message: 'Vendors',
         choices: getChoices(vendors),
       },
     ];
@@ -67,7 +68,7 @@ module.exports = generators.Base.extend({
       'src/assets.yml',
       'src/index.html',
       // src/app
-      'src/app/app.ctrl.js',
+      'src/app/app.controller.js',
       'src/app/app.module.js',
       'src/app/lib/config/config.js',
       // src/style

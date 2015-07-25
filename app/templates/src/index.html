@@ -3,7 +3,7 @@
 lang="en"
 data-env="<%- "\<\%= env \%\>" %>"
 ng-app="app"
-ng-controller="AppCtrl"
+ng-controller="AppController"
 >
   <head>
     <meta charset="utf-8">
@@ -13,8 +13,7 @@ ng-controller="AppCtrl"
 
     <base href="/">
 
-    <!-- @todo -->
-    <title>title</title>
+    <title><%= name %></title>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
@@ -25,7 +24,7 @@ ng-controller="AppCtrl"
   <body>
 
     <!-- move this to default-layout template -->
-    <div ui-view="main"></div>
+    <div ui-view="default"></div>
 
     <div default-layout></div>
 

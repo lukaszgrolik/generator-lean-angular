@@ -4,8 +4,8 @@
     "gulp": "0.0.0",
     "gulp-angular-modules": "0.0.0",
     "gulp-angular-templatecache": "0.0.0",
-    "gulp-autoprefixer": "0.0.0",
-    "gulp-babel": "0.0.0",
+    "gulp-autoprefixer": "0.0.0",<% if (useBabel) { %>
+    "gulp-babel": "0.0.0",<% } %>
     "gulp-concat": "0.0.0",
     "gulp-css-globbing": "0.0.0",
     "gulp-htmlmin": "0.0.0",

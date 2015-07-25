@@ -7,7 +7,6 @@ var minimist = require('minimist');
 var lodash = require('lodash');
 
 var tasks = {};
-
 var paths = {
   buildTemp: 'build-temp',
   devBundle: 'web/dev',
@@ -38,8 +37,7 @@ tasks.connectDev = function() {
   return gulp.src(paths.devBundle + '/')
   .pipe(gp.webserver({
     host: '0.0.0.0',
-    port: 3400,
-    // livereload: true
+    port: <%= devServerPort %>,
     fallback: 'index.html',
   }));
 }
@@ -48,15 +46,9 @@ tasks.connectProd = function() {
   return gulp.src(paths.prodBundle + '/')
   .pipe(gp.webserver({
     host: '0.0.0.0',
-    port: 3401,
+    port: <%= prodServerPort %>,
     fallback: 'index.html',
   }));
-}
-
-tasks.livereload = function() {
-  return gulp.src('web/**/*.{html,css,js}')
-  .pipe(gp.plumber())
-  // .pipe(gp.connect.reload());
 }
 
 tasks.buildDevIndex = function() {
@@ -71,8 +63,6 @@ tasks.buildDevIndex = function() {
 }
 
 tasks.buildProdIndex = function() {
-  // var assets = gp.useref.assets();
-
   return gulp.src('src/index.html')
   .pipe(gp.plumber())
   .pipe(gp.rename('index.html'))
@@ -80,9 +70,6 @@ tasks.buildProdIndex = function() {
     env: 'prod',
     assets: getAssets(),
   }))
-  // .pipe(assets)
-  // .pipe(assets.restore())
-  // .pipe(gp.useref())
   .pipe(gulp.dest(paths.prodBundle));
 }
 
@@ -106,6 +93,10 @@ tasks.buildAngularModules = function() {
   return gulp.src('src/app/**/*.js')
   .pipe(gp.angularModules('app-modules.js', {
     name: 'app.modules',
+    modules: [
+      'app.templates',
+      'app.modules',
+    ],
   }))
   .pipe(gulp.dest(paths.buildTemp));
 }
@@ -252,8 +243,8 @@ tasks.buildDevCoreJs = function() {
   return gulp.src(buildCoreJsScripts)
   .pipe(gp.plumber())
   .pipe(gp.sourcemaps.init())
-  .pipe(gp.wrapJs(jsWrapCode))
-  // .pipe(gp.babel())
+  .pipe(gp.wrapJs(jsWrapCode))<% if (useBabel) { %>
+  .pipe(gp.babel())<% } %>
   .pipe(gp.concat('app.js'))
   .pipe(gp.sourcemaps.write('./'))
   .pipe(gulp.dest(paths.devBundle + '/js'));
@@ -263,20 +254,18 @@ tasks.buildProdCoreJs = function() {
   return gulp.src(buildCoreJsScripts)
   .pipe(gp.plumber())
   .pipe(gp.sourcemaps.init())
-  .pipe(gp.wrapJs(jsWrapCode))
-  // .pipe(gp.babel())
+  .pipe(gp.wrapJs(jsWrapCode))<% if (useBabel) { %>
+  .pipe(gp.babel())<% } %>
   .pipe(gp.concat('app.min.js'))
   .pipe(gp.ngAnnotate())
   .pipe(gp.uglify())
   .pipe(gp.sourcemaps.write('./'))
-  // .pipe(gp.rename('app.min.js'))
   .pipe(gulp.dest(paths.prodBundle + '/js'));
 }
 
 tasks.buildCoreJs = function(cb) {
   runSequence(
     ['buildAngularTemplates', 'buildAngularModules'],
-    // 'buildAngularModules',
     ['buildDevCoreJs', 'buildProdCoreJs'],
     cb
   );
@@ -308,7 +297,6 @@ tasks.removeAnnotations = function() {
 
 gulp.task('connectDev', tasks.connectDev);
 gulp.task('connectProd', tasks.connectProd);
-// gulp.task('livereload', tasks.livereload);
 
 gulp.task('buildDevIndex', tasks.buildDevIndex);
 gulp.task('buildProdIndex', tasks.buildProdIndex);
@@ -361,13 +349,11 @@ gulp.task('watch', function() {
     'buildCoreJs',
   ]);
   gulp.watch('src/copy/**/*', {interval: 500}, ['copyToWeb']);
-  // gulp.watch('web/**/*.{html,css,js}', ['livereload'])
 });
 
 gulp.task('build', [
   'buildDevIndex',
   'buildProdIndex',
-  // 'buildAngularTemplates',
   'buildVendorCss',
   'buildVendorJs',
   'buildCoreCss',

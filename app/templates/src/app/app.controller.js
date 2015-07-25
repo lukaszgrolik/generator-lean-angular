@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('AppCtrl', function($scope) {
+.controller('AppController', function($scope) {
 
   //
   // HELPERS

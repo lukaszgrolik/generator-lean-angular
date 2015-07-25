@@ -2,8 +2,9 @@ angular.module('app', [
   'ui.router',
   'ui.select',
   //
-  'app.templates',
-  'app.modules',
+  // @todo test gp.angularModules
+  // 'app.templates',
+  // 'app.modules',
 ])
 .config(function($logProvider, $compileProvider, $httpProvider, $locationProvider, $urlRouterProvider, CONFIG) {
 
