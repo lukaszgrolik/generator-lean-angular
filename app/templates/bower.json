@@ -1,8 +1,8 @@
 {
   "name": "<%= name %>",
-  "dependencies": {
-    "angular": "1.4.3",
-    "font-awesome": "4.3.0",
-    "moment": "2.10.3"
+  "dependencies": {<% -%>
+    <% vendors.forEach(function(vendor, i) { %>
+    "<%= vendor %>": "0.0.0"<% if (i !== (vendors.length - 1)) { %>,<% } -%>
+    <% }); %>
   }
 }

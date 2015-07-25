@@ -19,6 +19,7 @@ module.exports = generators.Base.extend({
 
     var prompts = [
       {
+        // @todo folder name with slashes
         name: 'paramCaseName',
         message: 'paramCaseName',
       },

@@ -1,11 +1,11 @@
-# todo default: bootstrap, underscore, moment,
-# todo optional: animate, sanitize, font awesome
+vendorStyles:<% if (countStyles() === 0) { %> []<% } %><% -%>
+<% vendors.forEach(function(vendor, i) { -%>
+<% var vendorObj = getVendorObject(vendor); %><% if (vendorObj.styles && vendorObj.styles.src) { %>
+  - src: <%= vendorObj.styles.src %><% } %><% if (vendorObj.styles && vendorObj.styles.dist) { %>
+    dist: <%= vendorObj.styles.dist %><% } -%><% }); %>
 
-vendorStyles: []
-
-vendorScripts:
-  - src: bower_components/moment/moment.js
-    dist: bower_components/moment/min/moment.min.js
-
-  - src: bower_components/angular/angular.js
-    dist: bower_components/angular/angular.min.js
+vendorScripts:<% if (countScripts() === 0) { %> []<% } %><% -%>
+<% vendors.forEach(function(vendor, i) { -%>
+<% var vendorObj = getVendorObject(vendor); %><% if (vendorObj.scripts && vendorObj.scripts.src) { %>
+  - src: <%= vendorObj.scripts.src %><% } %><% if (vendorObj.scripts && vendorObj.scripts.dist) { %>
+    dist: <%= vendorObj.scripts.dist %><% } -%><% }); %>

@@ -18,16 +18,19 @@ ng-controller="AppCtrl"
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="css/vendor<%- "\<\%= env === 'prod' ? '.min' : '' \%\>" %>.css">
-    <link rel="stylesheet" href="css/main<%- "\<\%= env === 'prod' ? '.min' : '' \%\>" %>.css">
+    <%- "\<\% if (assets.vendorStyles.length) { \%\>" %><link rel="stylesheet" href="css/vendor<%- "\<\%= env === 'prod' ? '.min' : '' \%\>" %>.css">
+    <%- "\<\% } \%\>" %><link rel="stylesheet" href="css/app<%- "\<\%= env === 'prod' ? '.min' : '' \%\>" %>.css">
   </head>
 
   <body>
 
+    <!-- move this to default-layout template -->
+    <div ui-view="main"></div>
+
     <div default-layout></div>
 
-    <script src="js/vendor<%- "\<\%= env === 'prod' ? '.min' : '' \%\>" %>.js"></script>
-    <script src="js/main<%- "\<\%= env === 'prod' ? '.min' : '' \%\>" %>.js"></script>
+    <%- "\<\% if (assets.vendorScripts.length) { \%\>" %><script src="js/vendor<%- "\<\%= env === 'prod' ? '.min' : '' \%\>" %>.js"></script>
+    <%- "\<\% } \%\>" %><script src="js/app<%- "\<\%= env === 'prod' ? '.min' : '' \%\>" %>.js"></script>
 
   </body>
 </html>

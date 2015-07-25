@@ -1,5 +1,5 @@
 angular.module('app.<%= camelCaseName %>')
-.controller('<%= pascalCaseName %>Ctrl', function($scope) {
+.controller('<%= pascalCaseName %>Controller', function($scope) {
 
   //
   // HELPERS

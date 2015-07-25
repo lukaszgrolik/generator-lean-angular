@@ -146,8 +146,8 @@ tasks.buildVendorCss = function(cb) {
 
 tasks.buildDevCoreCss = function() {
   // return gulp.src('src/style/**/*.scss')
-  return gulp.src('src/style/main.scss')
-  .pipe(gp.plumber()) // @test after sass because of errLogToConsole:true
+  return gulp.src('src/style/app.scss')
+  .pipe(gp.plumber()) // @todo test after sass because of errLogToConsole:true
   .pipe(gp.sourcemaps.init())
   .pipe(gp.cssGlobbing({
     extensions: ['.scss'],
@@ -172,7 +172,7 @@ tasks.buildDevCoreCss = function() {
 }
 
 tasks.buildProdCoreCss = function() {
-  return gulp.src('src/style/main.scss')
+  return gulp.src('src/style/app.scss')
   .pipe(gp.plumber())
   .pipe(gp.sourcemaps.init())
   .pipe(gp.cssGlobbing({
@@ -196,7 +196,7 @@ tasks.buildProdCoreCss = function() {
   .pipe(gp.minifyCss({
     advanced: false,
   }))
-  .pipe(gp.rename('main.min.css'))
+  .pipe(gp.rename('app.min.css'))
   .pipe(gp.sourcemaps.write('./'))
   .pipe(gulp.dest(paths.prodBundle + '/css'));
 }
@@ -247,15 +247,14 @@ var buildCoreJsScripts = [
   'src/app/**/*.module.js',
   'src/app/**/*.js',
 ];
-var jsWrapCode = "(function() {\n\n<%- "\<\%= contents \%\>" %>\n\n}());";
-
+var jsWrapCode = "(function() {\n'use strict';{%= body %}\n}());";
 tasks.buildDevCoreJs = function() {
   return gulp.src(buildCoreJsScripts)
   .pipe(gp.plumber())
   .pipe(gp.sourcemaps.init())
-  .pipe(gp.wrap(jsWrapCode))
+  .pipe(gp.wrapJs(jsWrapCode))
   // .pipe(gp.babel())
-  .pipe(gp.concat('main.js'))
+  .pipe(gp.concat('app.js'))
   .pipe(gp.sourcemaps.write('./'))
   .pipe(gulp.dest(paths.devBundle + '/js'));
 }
@@ -264,13 +263,13 @@ tasks.buildProdCoreJs = function() {
   return gulp.src(buildCoreJsScripts)
   .pipe(gp.plumber())
   .pipe(gp.sourcemaps.init())
-  .pipe(gp.wrap(jsWrapCode))
+  .pipe(gp.wrapJs(jsWrapCode))
   // .pipe(gp.babel())
-  .pipe(gp.concat('main.min.js'))
+  .pipe(gp.concat('app.min.js'))
   .pipe(gp.ngAnnotate())
   .pipe(gp.uglify())
   .pipe(gp.sourcemaps.write('./'))
-  // .pipe(gp.rename('main.min.js'))
+  // .pipe(gp.rename('app.min.js'))
   .pipe(gulp.dest(paths.prodBundle + '/js'));
 }
 
@@ -307,56 +306,6 @@ tasks.removeAnnotations = function() {
 //
 //
 
-tasks.generateComponent = function(cb) {
-  var options = minimist(process.argv.slice(2), {});
-  var path = options.path || '';
-  var hyphenName = options.name;
-  var jsName = hyphenName.split('-')
-  .map(function(word, i) {
-    if (i != 0) {
-      word = capitalizeFirstLetter(word);
-    }
-
-    return word;
-  })
-  .join('');
-  var pcName = capitalizeFirstLetter(jsName);
-  var names = {
-    hyphenName: hyphenName,
-    pcName: pcName,
-    jsName: jsName,
-  };
-
-  var contents = {
-    module: getContent('module.js'),
-    controller: getContent('controller.js'),
-    directive: getContent('directive.js'),
-    template: getContent('template.html'),
-    style: getContent('style.scss'),
-  };
-
-  fs.mkdirSync('src/app/' + path + hyphenName);
-  fs.writeFileSync('src/app/' + path + hyphenName + '/' + jsName + 'Module.js', contents.module);
-  fs.writeFileSync('src/app/' + path + hyphenName + '/' + pcName + 'Ctrl.js', contents.controller);
-  fs.writeFileSync('src/app/' + path + hyphenName + '/' + jsName + '.js', contents.directive);
-  fs.writeFileSync('src/app/' + path + hyphenName + '/' + hyphenName + '.html', contents.template);
-  fs.writeFileSync('src/app/' + path + hyphenName + '/_' + hyphenName + '.scss', contents.style);
-
-  cb();
-
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
-  function getContent(name) {
-    return lodash.template(fs.readFileSync('src/generatorTemplates/component/' + name))(names)
-  }
-};
-
-//
-//
-//
-
 gulp.task('connectDev', tasks.connectDev);
 gulp.task('connectProd', tasks.connectProd);
 // gulp.task('livereload', tasks.livereload);
@@ -386,7 +335,6 @@ gulp.task('buildCoreJs', tasks.buildCoreJs);
 gulp.task('copyToWeb', tasks.copyToWeb);
 
 gulp.task('removeAnnotations', tasks.removeAnnotations);
-gulp.task('generateComponent', tasks.generateComponent);
 
 gulp.task('watch', function() {
   gulp.watch('src/app/**/*.html', {interval: 500}, ['buildCoreJs']);
