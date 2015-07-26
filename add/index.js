@@ -1,25 +1,24 @@
 var generators = require('yeoman-generator');
-var extend = require('extend');
+var _ = require('underscore');
 var changeCase = require('change-case')
 
-var answers = {};
 
 module.exports = generators.Base.extend({
   constructor: function () {
+    this.answers = {};
     generators.Base.apply(this, arguments);
   },
 
   prompting: function () {
     // don't prompt if data is provided via main generator
     if (this.options.add) {
-      extend(answers, transformPromptData(this.options.add));
+      _(this.answers).extend(transformPromptData(this.options.add));
 
       return;
     };
 
     var prompts = [
       {
-        // @todo folder name with slashes
         name: 'paramCaseName',
         message: 'paramCaseName',
       },
@@ -42,32 +41,32 @@ module.exports = generators.Base.extend({
     var done = this.async();
 
     this.prompt(prompts, function(data) {
-      extend(answers, transformPromptData(data));
+      _(this.answers).extend(transformPromptData(data));
 
       done();
     }.bind(this));
   },
 
   writing: function () {
-    var data = extend(answers, {
-      camelCaseName: changeCase.camel(answers.paramCaseName),
-      pascalCaseName: changeCase.pascal(answers.paramCaseName),
+    var data = _(this.answers).extend({
+      camelCaseName: changeCase.camel(this.answers.paramCaseName),
+      pascalCaseName: changeCase.pascal(this.answers.paramCaseName),
     });
     var templates = [
-      {src: 'common/template.html', dest: answers.paramCaseName + '.html'},
-      {src: 'common/style.scss', dest: '_' + answers.paramCaseName + '.scss'},
-      {src: 'common/controller.js', dest: answers.paramCaseName + '.controller.js'},
+      {src: 'common/template.html', dest: this.answers.paramCaseName + '.html'},
+      {src: 'common/style.scss', dest: '_' + this.answers.paramCaseName + '.scss'},
+      {src: 'common/controller.js', dest: this.answers.paramCaseName + '.controller.js'},
     ];
     var specificTemplates = null;
 
-    if (answers.type === 'component') {
+    if (this.answers.type === 'component') {
       specificTemplates = [
-        {src: 'component/module.js', dest: answers.paramCaseName + '.module.js'},
-        {src: 'component/directive.js', dest: answers.paramCaseName + '.directive.js'},
+        {src: 'component/module.js', dest: this.answers.paramCaseName + '.module.js'},
+        {src: 'component/directive.js', dest: this.answers.paramCaseName + '.directive.js'},
       ];
-    } else if (answers.type === 'view') {
+    } else if (this.answers.type === 'view') {
       specificTemplates = [
-        {src: 'view/module.js', dest: answers.paramCaseName + '.module.js'},
+        {src: 'view/module.js', dest: this.answers.paramCaseName + '.module.js'},
       ];
     }
 
@@ -76,7 +75,7 @@ module.exports = generators.Base.extend({
     templates.forEach(function(template) {
       this.fs.copyTpl(
         this.templatePath(template.src),
-        this.destinationPath('src/app/' + answers.path + answers.paramCaseName + '/' + template.dest),
+        this.destinationPath('src/app/' + this.answers.path + this.answers.paramCaseName + '/' + template.dest),
         data
       );
     }.bind(this));

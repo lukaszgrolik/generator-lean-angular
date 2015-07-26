@@ -95,7 +95,6 @@ tasks.buildAngularModules = function() {
     name: 'app.modules',
     modules: [
       'app.templates',
-      'app.modules',
     ],
   }))
   .pipe(gulp.dest(paths.buildTemp));

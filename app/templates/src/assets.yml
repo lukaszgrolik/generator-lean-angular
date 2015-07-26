@@ -1,11 +1,16 @@
-vendorStyles:<% if (countStyles() === 0) { %> []<% } %><% -%>
-<% vendors.forEach(function(vendor, i) { -%>
-<% var vendorObj = getVendorObject(vendor); %><% if (vendorObj.styles && vendorObj.styles.src) { %>
-  - src: <%= vendorObj.styles.src %><% } %><% if (vendorObj.styles && vendorObj.styles.dist) { %>
-    dist: <%= vendorObj.styles.dist %><% } -%><% }); %>
+<%
+var assets = getAssets();
+var styles = assets.styles;
+var scripts = assets.scripts;
+ -%>
+vendorStyles:<% if (styles.length === 0) { %> []<% } %><% -%>
+<% styles.forEach(function(style, i) { -%>
+<% if (style.src) { %>
+  - src: <%= style.src %><% } %><% if (style.dist) { %>
+    dist: <%= style.dist %><% } -%><% }); %>
 
-vendorScripts:<% if (countScripts() === 0) { %> []<% } %><% -%>
-<% vendors.forEach(function(vendor, i) { -%>
-<% var vendorObj = getVendorObject(vendor); %><% if (vendorObj.scripts && vendorObj.scripts.src) { %>
-  - src: <%= vendorObj.scripts.src %><% } %><% if (vendorObj.scripts && vendorObj.scripts.dist) { %>
-    dist: <%= vendorObj.scripts.dist %><% } -%><% }); %>
+vendorScripts:<% if (scripts.length === 0) { %> []<% } %><% -%>
+<% scripts.forEach(function(script, i) { -%>
+<% if (script.src) { %>
+  - src: <%= script.src %><% } %><% if (script.dist) { %>
+    dist: <%= script.dist %><% } -%><% }); %>

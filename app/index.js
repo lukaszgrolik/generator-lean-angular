@@ -4,6 +4,7 @@ var ncu = require('npm-check-updates');
 var bcu = require('bower-check-updates');
 
 var vendors = require('./vendors');
+var templateHelpers = require('./templateHelpers');
 var answers = {};
 
 module.exports = generators.Base.extend({
@@ -78,48 +79,9 @@ module.exports = generators.Base.extend({
       'src/style/app.scss',
     ];
 
-    this.composeWith('lean-angular:add', {
-      options: {
-        add: {
-          paramCaseName: 'error-404-page',
-          path: 'views/',
-          type: 'view',
-        },
-      },
-    });
+    subGenerateFiles(this);
 
-    this.composeWith('lean-angular:add', {
-      options: {
-        add: {
-          paramCaseName: 'default-layout',
-          path: 'layouts/',
-          type: 'component',
-        },
-      },
-    });
-
-    var data = _(answers).extend({
-      vendorObjects: vendors,
-      getVendorObject: function(vendorName) {
-        return _(this.vendorObjects).findWhere({name: vendorName});
-      },
-      getCheckedVendorsObjects: function() {
-        return _(this.vendors).map(function(vendor) {
-          return this.getVendorObject(vendor);
-        }.bind(this));
-      },
-      countStyles: function() {
-        return this.countAssets('styles');
-      },
-      countScripts: function() {
-        return this.countAssets('scripts');
-      },
-      countAssets: function(type) {
-        return _(this.getCheckedVendorsObjects()).reduce(function(val, vendorObj) {
-          return val + (vendorObj.hasOwnProperty(type) ? 1 : 0);
-        }, 0);
-      },
-    });
+    var data = _(answers).extend(templateHelpers);
 
     templates.forEach(function(template) {
       this.fs.copyTpl(
@@ -135,6 +97,10 @@ module.exports = generators.Base.extend({
     .then(function() {
       return bcu.run({upgrade: true});
     });
+  },
+
+  end: function() {
+
   },
 });
 
@@ -152,4 +118,36 @@ function getChoices(vendors) {
   .value();
 
   return result;
+}
+
+function subGenerateFiles(generator) {
+  generator.composeWith('lean-angular:add', {
+    options: {
+      add: {
+        paramCaseName: 'default-layout',
+        path: 'layouts/',
+        type: 'component',
+      },
+    },
+  });
+
+  generator.composeWith('lean-angular:add', {
+    options: {
+      add: {
+        paramCaseName: 'home-page',
+        path: 'views/',
+        type: 'view',
+      },
+    },
+  });
+
+  generator.composeWith('lean-angular:add', {
+    options: {
+      add: {
+        paramCaseName: 'error-404-page',
+        path: 'views/',
+        type: 'view',
+      },
+    },
+  });
 }

@@ -1,10 +1,7 @@
-angular.module('app', [
-  'ui.router',
-  'ui.select',
+angular.module('app', [<% getAngularModules().forEach(function(module, i) { %>
+  '<%= module %>',<% }); %>
   //
-  // @todo test gp.angularModules
-  // 'app.templates',
-  // 'app.modules',
+  'app.modules',
 ])
 .config(function($logProvider, $compileProvider, $httpProvider, $locationProvider, $urlRouterProvider, CONFIG) {
 
@@ -52,9 +49,10 @@ angular.module('app', [
 
   $rootScope.$on('$stateChangeSuccess', function(e, to, toParams, from, fromParams) {
     // scroll to top on page change
-    if ($state.current.parent === undefined) {
-      $window.scrollTo(0, 0);
-    }
+    // @todo keep?
+    // if ($state.current.parent === undefined) {
+    //   $window.scrollTo(0, 0);
+    // }
   });
 
   $rootScope.$on('$stateChangeError', function(e, to, toParams, from, fromParams, err) {

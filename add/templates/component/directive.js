@@ -1,4 +1,4 @@
-angular.module('app.<%= camelCaseName %>', [])
+angular.module('app.<%= camelCaseName %>')
 .directive('<%= camelCaseName %>', function($templateCache) {
 
   return {
