@@ -5,7 +5,7 @@ angular.module('app.<%= camelCaseName %>', [])
   .state('<%= camelCaseName %>', {
     url: '/<%= paramCaseName %>',
     views: {
-      default: {
+      main: {
         templateProvider: function($templateCache) {
           return $templateCache.get('<%= path %><%= paramCaseName %>/<%= paramCaseName %>.html');
         },
