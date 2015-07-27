@@ -9,7 +9,8 @@ module.exports = [
   },
   {
     name: 'bootstrap',
-    disablePrompt: true,
+    // disablePrompt: true,
+    checked: true,
     styles: {
       src: 'bower_components/bootstrap/dist/css/bootstrap.css',
       dist: 'bower_components/bootstrap/dist/css/bootstrap.min.css',
@@ -32,7 +33,16 @@ module.exports = [
     },
   },
   {
+    name: 'js-data',
+    checked: true,
+    scripts: {
+      src: 'bower_components/js-data/dist/js-data.js',
+      dist: 'bower_components/js-data/dist/js-data.min.js',
+    },
+  },
+  {
     name: 'font-awesome',
+    checked: true,
     styles: {
       src: 'bower_components/font-awesome/css/font-awesome.css',
       dist: 'bower_components/font-awesome/css/font-awesome.min.css',
@@ -52,11 +62,11 @@ module.exports = [
   {
     name: 'angular-ui-router',
     checked: true,
+    ngModule: 'ui.router',
     scripts: {
       src: 'bower_components/angular-ui-router/release/angular-ui-router.js',
       dist: 'bower_components/angular-ui-router/release/angular-ui-router.min.js',
     },
-    ngModule: 'ui.router',
   },
   {
     name: 'angular-animate',
@@ -64,6 +74,15 @@ module.exports = [
     scripts: {
       src: 'bower_components/angular-animate/angular-animate.js',
       dist: 'bower_components/angular-animate/angular-animate.min.js',
+    },
+  },
+  {
+    name: 'js-data-angular',
+    checked: true,
+    ngModule: 'js-data',
+    scripts: {
+      src: 'bower_components/js-data-angular/dist/js-data-angular.js',
+      dist: 'bower_components/js-data-angular/dist/js-data-angular.min.js',
     },
   },
   {
@@ -105,7 +124,7 @@ module.exports = [
       src: 'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       dist: 'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
     },
-    dependencies: ['bootstrap'],
+    // dependencies: ['bootstrap'],
   },
   {
     name: 'angular-ui-select',
@@ -118,11 +137,11 @@ module.exports = [
       src: 'bower_components/angular-ui-select/dist/select.js',
       dist: 'bower_components/angular-ui-select/dist/select.min.js',
     },
-    dependencies: ['bootstrap'],
+    // dependencies: ['bootstrap'],
   },
   {
     name: 'angular-xeditable',
-    dependencies: ['bootstrap'],
+    // dependencies: ['bootstrap'],
     ngModule: 'xeditable',
     scripts: {
       src: 'bower_components/angular-xeditable/dist/js/xeditable.js',

@@ -101,13 +101,13 @@ tasks.buildAngularModules = function() {
 }
 
 tasks.buildDevVendorCss = function() {
-  var scripts = getAssets().vendorStyles.map(function(asset) {
-
+  var styles = getAssets().vendorStyles.map(function(asset) {
     return asset.src;
   });
 
-  return gulp.src(scripts)
+  return gulp.src(styles)
   .pipe(gp.plumber())
+  .pipe(gp.expectFile(styles))
   .pipe(gp.sourcemaps.init())
   .pipe(gp.concat('vendor.css'))
   .pipe(gp.sourcemaps.write('./'))
@@ -115,12 +115,13 @@ tasks.buildDevVendorCss = function() {
 }
 
 tasks.buildProdVendorCss = function() {
-  var scripts = getAssets().vendorStyles.map(function(asset) {
+  var styles = getAssets().vendorStyles.map(function(asset) {
     return (asset.dist || asset.src);
   });
 
-  return gulp.src(scripts)
+  return gulp.src(styles)
   .pipe(gp.plumber())
+  .pipe(gp.expectFile(styles))
   .pipe(gp.sourcemaps.init())
   .pipe(gp.concat('vendor.min.css'))
   .pipe(gp.sourcemaps.write('./'))
@@ -205,6 +206,7 @@ tasks.buildDevVendorJs = function() {
 
   return gulp.src(scripts)
   .pipe(gp.plumber())
+  .pipe(gp.expectFile(scripts))
   .pipe(gp.sourcemaps.init())
   .pipe(gp.concat('vendor.js'))
   .pipe(gp.sourcemaps.write('./'))
@@ -218,6 +220,7 @@ tasks.buildProdVendorJs = function() {
 
   return gulp.src(scripts)
   .pipe(gp.plumber())
+  .pipe(gp.expectFile(scripts))
   .pipe(gp.sourcemaps.init())
   .pipe(gp.concat('vendor.min.js'))
   .pipe(gp.sourcemaps.write('./'))
@@ -277,6 +280,16 @@ tasks.copyToWeb = function() {
   .pipe(gulp.dest('web/prod'));
 }
 
+tasks.copyVendorAssets = function() {<% if (vendors.indexOf('font-awesome') > -1 || vendors.indexOf('bootstrap') > -1) { %>
+  return gulp.src([<% if (vendors.indexOf('font-awesome') > -1) { %>
+    'bower_components/font-awesome/fonts/**/*',<% } %><% if (vendors.indexOf('bootstrap') > -1) { %>
+    'bower_components/bootstrap/fonts/**/*',
+  <% } %>])
+  .pipe(gp.plumber())
+  .pipe(gulp.dest('web/dev/fonts'))
+  .pipe(gulp.dest('web/prod/fonts'));
+<% } %>};
+
 //
 //
 //
@@ -320,6 +333,7 @@ gulp.task('buildVendorJs', tasks.buildVendorJs);
 gulp.task('buildCoreJs', tasks.buildCoreJs);
 
 gulp.task('copyToWeb', tasks.copyToWeb);
+gulp.task('copyVendorAssets', tasks.copyVendorAssets);
 
 gulp.task('removeAnnotations', tasks.removeAnnotations);
 
@@ -334,6 +348,7 @@ gulp.task('watch', function() {
   ], {interval: 500}, [
     'buildVendorCss',
     'buildVendorJs',
+    'copyVendorAssets',
   ]);
   gulp.watch('src/index.html', {interval: 500}, [
     'buildDevIndex',
@@ -344,6 +359,7 @@ gulp.task('watch', function() {
     'buildProdIndex',
     'buildVendorCss',
     'buildVendorJs',
+    'copyVendorAssets',
     'buildProdCoreCss',
     'buildCoreJs',
   ]);
@@ -355,6 +371,7 @@ gulp.task('build', [
   'buildProdIndex',
   'buildVendorCss',
   'buildVendorJs',
+  'copyVendorAssets',
   'buildCoreCss',
   'buildCoreJs',
   'copyToWeb',

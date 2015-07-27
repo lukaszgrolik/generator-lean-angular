@@ -32,6 +32,8 @@ angular.module('app', [<% getAngularModules().forEach(function(module, i) { %>
     enabled: true,
   });
 
+  // comment "url" param in state definition in error-404-page.module.js
+  // to enable 404 page without changing url
   $urlRouterProvider.otherwise(function($injector, $location){
      var state = $injector.get('$state');
 
@@ -41,22 +43,29 @@ angular.module('app', [<% getAngularModules().forEach(function(module, i) { %>
   });
 
 })
-.run(function($rootScope, $log, $window, $state) {
+.run(function($rootScope, $log, $window, $state, DS, CONFIG) {
 
   $rootScope.$on('$stateChangeStart', function(e, to, toParams, from, fromParams) {
 
   });
 
   $rootScope.$on('$stateChangeSuccess', function(e, to, toParams, from, fromParams) {
-    // scroll to top on page change
-    // @todo keep?
-    // if ($state.current.parent === undefined) {
-    //   $window.scrollTo(0, 0);
-    // }
+
   });
 
   $rootScope.$on('$stateChangeError', function(e, to, toParams, from, fromParams, err) {
     $log.log('$stateChangeError err', err);
   });
+
+  //
+  // debug
+  //
+
+  if (CONFIG.debug) {
+    window.debug = {
+      $state: $state,
+      DS: DS,
+    };
+  }
 
 });

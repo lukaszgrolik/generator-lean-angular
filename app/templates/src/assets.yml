@@ -2,7 +2,7 @@
 var assets = getAssets();
 var styles = assets.styles;
 var scripts = assets.scripts;
- -%>
+-%>
 vendorStyles:<% if (styles.length === 0) { %> []<% } %><% -%>
 <% styles.forEach(function(style, i) { -%>
 <% if (style.src) { %>
