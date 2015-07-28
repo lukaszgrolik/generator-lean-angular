@@ -3,10 +3,11 @@ var gp = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var yaml = require('js-yaml');
 var fs = require('fs');
-var minimist = require('minimist');
-var lodash = require('lodash');
 
-var tasks = {};
+//
+//
+//
+
 var paths = {
   buildTemp: 'build-temp',
   devBundle: 'web/dev',
@@ -33,25 +34,29 @@ function getAssets() {
 //
 //
 
-tasks.connectDev = function() {
+gulp.task('connectDev', function() {
   return gulp.src(paths.devBundle + '/')
   .pipe(gp.webserver({
     host: '0.0.0.0',
     port: <%= devServerPort %>,
     fallback: 'index.html',
   }));
-}
+});
 
-tasks.connectProd = function() {
+gulp.task('connectProd', function() {
   return gulp.src(paths.prodBundle + '/')
   .pipe(gp.webserver({
     host: '0.0.0.0',
     port: <%= prodServerPort %>,
     fallback: 'index.html',
   }));
-}
+});
 
-tasks.buildDevIndex = function() {
+//
+//
+//
+
+gulp.task('buildDevIndex', function() {
   return gulp.src('src/index.html')
   .pipe(gp.plumber())
   .pipe(gp.rename('index.html'))
@@ -60,9 +65,9 @@ tasks.buildDevIndex = function() {
     assets: getAssets(),
   }))
   .pipe(gulp.dest(paths.devBundle));
-}
+});
 
-tasks.buildProdIndex = function() {
+gulp.task('buildProdIndex', function() {
   return gulp.src('src/index.html')
   .pipe(gp.plumber())
   .pipe(gp.rename('index.html'))
@@ -71,9 +76,13 @@ tasks.buildProdIndex = function() {
     assets: getAssets(),
   }))
   .pipe(gulp.dest(paths.prodBundle));
-}
+});
 
-tasks.buildAngularTemplates = function() {
+//
+//
+//
+
+gulp.task('buildAngularTemplates', function() {
   return gulp.src('src/app/**/*.html')
   .pipe(gp.plumber())
   .pipe(gp.htmlmin({
@@ -87,9 +96,9 @@ tasks.buildAngularTemplates = function() {
     standalone: true,
   }))
   .pipe(gulp.dest(paths.buildTemp));
-}
+});
 
-tasks.buildAngularModules = function() {
+gulp.task('buildAngularModules', function() {
   return gulp.src('src/app/**/*.js')
   .pipe(gp.angularModules('app-modules.js', {
     name: 'app.modules',
@@ -98,9 +107,13 @@ tasks.buildAngularModules = function() {
     ],
   }))
   .pipe(gulp.dest(paths.buildTemp));
-}
+});
 
-tasks.buildDevVendorCss = function() {
+//
+//
+//
+
+gulp.task('buildDevVendorCss', function() {
   var styles = getAssets().vendorStyles.map(function(asset) {
     return asset.src;
   });
@@ -112,9 +125,9 @@ tasks.buildDevVendorCss = function() {
   .pipe(gp.concat('vendor.css'))
   .pipe(gp.sourcemaps.write('./'))
   .pipe(gulp.dest(paths.devBundle + '/css'));
-}
+});
 
-tasks.buildProdVendorCss = function() {
+gulp.task('buildProdVendorCss', function() {
   var styles = getAssets().vendorStyles.map(function(asset) {
     return (asset.dist || asset.src);
   });
@@ -126,16 +139,20 @@ tasks.buildProdVendorCss = function() {
   .pipe(gp.concat('vendor.min.css'))
   .pipe(gp.sourcemaps.write('./'))
   .pipe(gulp.dest(paths.prodBundle + '/css'));
-}
+});
 
-tasks.buildVendorCss = function(cb) {
+gulp.task('buildVendorCss', function(cb) {
   runSequence(
     ['buildDevVendorCss', 'buildProdVendorCss'],
     cb
   );
-};
+});
 
-tasks.buildDevCoreCss = function() {
+//
+//
+//
+
+gulp.task('buildDevCoreCss', function() {
   // return gulp.src('src/style/**/*.scss')
   return gulp.src('src/style/app.scss')
   .pipe(gp.plumber()) // @todo test after sass because of errLogToConsole:true
@@ -160,9 +177,9 @@ tasks.buildDevCoreCss = function() {
   }))
   .pipe(gp.sourcemaps.write('./'))
   .pipe(gulp.dest(paths.devBundle + '/css'));
-}
+});
 
-tasks.buildProdCoreCss = function() {
+gulp.task('buildProdCoreCss', function() {
   return gulp.src('src/style/app.scss')
   .pipe(gp.plumber())
   .pipe(gp.sourcemaps.init())
@@ -190,16 +207,20 @@ tasks.buildProdCoreCss = function() {
   .pipe(gp.rename('app.min.css'))
   .pipe(gp.sourcemaps.write('./'))
   .pipe(gulp.dest(paths.prodBundle + '/css'));
-}
+});
 
-tasks.buildCoreCss = function(cb) {
+gulp.task('buildCoreCss', function(cb) {
   runSequence(
     ['buildDevCoreCss', 'buildProdCoreCss'],
     cb
   );
-};
+});
 
-tasks.buildDevVendorJs = function() {
+//
+//
+//
+
+gulp.task('buildDevVendorJs', function() {
   var scripts = getAssets().vendorScripts.map(function(asset) {
     return asset.src;
   });
@@ -211,9 +232,9 @@ tasks.buildDevVendorJs = function() {
   .pipe(gp.concat('vendor.js'))
   .pipe(gp.sourcemaps.write('./'))
   .pipe(gulp.dest(paths.devBundle + '/js'));
-}
+});
 
-tasks.buildProdVendorJs = function() {
+gulp.task('buildProdVendorJs', function() {
   var scripts = getAssets().vendorScripts.map(function(asset) {
     return (asset.dist || asset.src);
   });
@@ -225,14 +246,18 @@ tasks.buildProdVendorJs = function() {
   .pipe(gp.concat('vendor.min.js'))
   .pipe(gp.sourcemaps.write('./'))
   .pipe(gulp.dest(paths.prodBundle + '/js'));
-}
+});
 
-tasks.buildVendorJs = function(cb) {
+gulp.task('buildVendorJs', function(cb) {
   runSequence(
     ['buildDevVendorJs', 'buildProdVendorJs'],
     cb
   );
-};
+});
+
+//
+//
+//
 
 var buildCoreJsScripts = [
   paths.buildTemp + '/app-templates.js',
@@ -241,7 +266,8 @@ var buildCoreJsScripts = [
   'src/app/**/*.js',
 ];
 var jsWrapCode = "(function() {\n'use strict';{%= body %}\n}());";
-tasks.buildDevCoreJs = function() {
+
+gulp.task('buildDevCoreJs', function() {
   return gulp.src(buildCoreJsScripts)
   .pipe(gp.plumber())
   .pipe(gp.sourcemaps.init())
@@ -250,9 +276,9 @@ tasks.buildDevCoreJs = function() {
   .pipe(gp.concat('app.js'))
   .pipe(gp.sourcemaps.write('./'))
   .pipe(gulp.dest(paths.devBundle + '/js'));
-}
+});
 
-tasks.buildProdCoreJs = function() {
+gulp.task('buildProdCoreJs', function() {
   return gulp.src(buildCoreJsScripts)
   .pipe(gp.plumber())
   .pipe(gp.sourcemaps.init())
@@ -263,24 +289,28 @@ tasks.buildProdCoreJs = function() {
   .pipe(gp.uglify())
   .pipe(gp.sourcemaps.write('./'))
   .pipe(gulp.dest(paths.prodBundle + '/js'));
-}
+});
 
-tasks.buildCoreJs = function(cb) {
+gulp.task('buildCoreJs', function(cb) {
   runSequence(
     ['buildAngularTemplates', 'buildAngularModules'],
     ['buildDevCoreJs', 'buildProdCoreJs'],
     cb
   );
-};
+});
 
-tasks.copyToWeb = function() {
+//
+//
+//
+
+gulp.task('copyToWeb', function() {
   return gulp.src('src/copy/**/*')
   .pipe(gp.plumber())
   .pipe(gulp.dest('web/dev'))
   .pipe(gulp.dest('web/prod'));
-}
+});
 
-tasks.copyVendorAssets = function() {<% if (vendors.indexOf('font-awesome') > -1 || vendors.indexOf('bootstrap') > -1) { %>
+gulp.task('copyVendorAssets', function() {<% if (vendors.indexOf('font-awesome') > -1 || vendors.indexOf('bootstrap') > -1) { %>
   return gulp.src([<% if (vendors.indexOf('font-awesome') > -1) { %>
     'bower_components/font-awesome/fonts/**/*',<% } %><% if (vendors.indexOf('bootstrap') > -1) { %>
     'bower_components/bootstrap/fonts/**/*',
@@ -288,60 +318,31 @@ tasks.copyVendorAssets = function() {<% if (vendors.indexOf('font-awesome') > -1
   .pipe(gp.plumber())
   .pipe(gulp.dest('web/dev/fonts'))
   .pipe(gulp.dest('web/prod/fonts'));
-<% } %>};
+<% } %>});
 
 //
 //
 //
 
-tasks.removeAnnotations = function() {
+gulp.task('removeAnnotations', function() {
   return gulp.src('src/app/**/*.js')
   .pipe(gp.plumber())
   .pipe(gp.ngAnnotate({
     remove: true,
   }))
   .pipe(gulp.dest('src/app'));
-}
+});
 
 //
 //
 //
-
-gulp.task('connectDev', tasks.connectDev);
-gulp.task('connectProd', tasks.connectProd);
-
-gulp.task('buildDevIndex', tasks.buildDevIndex);
-gulp.task('buildProdIndex', tasks.buildProdIndex);
-
-gulp.task('buildAngularTemplates', tasks.buildAngularTemplates);
-gulp.task('buildAngularModules', tasks.buildAngularModules);
-
-gulp.task('buildDevVendorCss', tasks.buildDevVendorCss);
-gulp.task('buildProdVendorCss', tasks.buildProdVendorCss);
-gulp.task('buildDevCoreCss', tasks.buildDevCoreCss);
-gulp.task('buildProdCoreCss', tasks.buildProdCoreCss);
-
-gulp.task('buildDevVendorJs', tasks.buildDevVendorJs);
-gulp.task('buildProdVendorJs', tasks.buildProdVendorJs);
-gulp.task('buildDevCoreJs', tasks.buildDevCoreJs);
-gulp.task('buildProdCoreJs', tasks.buildProdCoreJs);
-
-gulp.task('buildVendorCss', tasks.buildVendorCss);
-gulp.task('buildCoreCss', tasks.buildCoreCss);
-
-gulp.task('buildVendorJs', tasks.buildVendorJs);
-gulp.task('buildCoreJs', tasks.buildCoreJs);
-
-gulp.task('copyToWeb', tasks.copyToWeb);
-gulp.task('copyVendorAssets', tasks.copyVendorAssets);
-
-gulp.task('removeAnnotations', tasks.removeAnnotations);
 
 gulp.task('watch', function() {
   gulp.watch('src/app/**/*.html', {interval: 500}, ['buildCoreJs']);
   gulp.watch('src/style/**/*.scss', {interval: 500}, ['buildCoreCss']);
   gulp.watch('src/app/**/*.scss', {interval: 500}, ['buildCoreCss']);
   gulp.watch('src/app/**/*.js', {interval: 500}, ['buildCoreJs']);
+
   gulp.watch([
     'bower_components/**/*.{css,js}',
     'src/vendor/**/*.{css,js}',
@@ -350,10 +351,12 @@ gulp.task('watch', function() {
     'buildVendorJs',
     'copyVendorAssets',
   ]);
+
   gulp.watch('src/index.html', {interval: 500}, [
     'buildDevIndex',
     'buildProdIndex'
   ]);
+
   gulp.watch('src/assets.yml', {interval: 500}, [
     'buildDevIndex',
     'buildProdIndex',
@@ -363,6 +366,7 @@ gulp.task('watch', function() {
     'buildProdCoreCss',
     'buildCoreJs',
   ]);
+
   gulp.watch('src/copy/**/*', {interval: 500}, ['copyToWeb']);
 });
 
@@ -376,6 +380,7 @@ gulp.task('build', [
   'buildCoreJs',
   'copyToWeb',
 ]);
+
 gulp.task('server', function(cb) {
   runSequence(
     'build',
@@ -384,4 +389,5 @@ gulp.task('server', function(cb) {
     cb
   );
 });
+
 gulp.task('default', ['server']);
