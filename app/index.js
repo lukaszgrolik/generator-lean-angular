@@ -121,7 +121,9 @@ function getChoices(vendors) {
 }
 
 function subGenerateFiles(generator) {
-  generator.composeWith('lean-angular:add', {
+  var generatorName = 'lukaszgrolik-angular';
+
+  generator.composeWith(generatorName + ':add', {
     options: {
       add: {
         paramCaseName: 'default-layout',
@@ -131,7 +133,7 @@ function subGenerateFiles(generator) {
     },
   });
 
-  generator.composeWith('lean-angular:add', {
+  generator.composeWith(generatorName + ':add', {
     options: {
       add: {
         paramCaseName: 'home-page',
@@ -141,7 +143,7 @@ function subGenerateFiles(generator) {
     },
   });
 
-  generator.composeWith('lean-angular:add', {
+  generator.composeWith(generatorName + ':add', {
     options: {
       add: {
         paramCaseName: 'error-404-page',
