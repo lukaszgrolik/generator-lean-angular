@@ -2,13 +2,27 @@
   "name": "generator-lukaszgrolik-angular",
   "version": "0.1.0",
   "description": "My personal Yeoman generator for highly automated Gulp driven Angular applications",
+  "main": "app/index.js",
   "files": [
     "app",
     "add"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "angular",
+    "gulp"
   ],
+  "homepage": "https://github.com/lukaszgrolik/generator-lukaszgrolik-angular",
+  "author": {
+    "name": "Łukasz Grolik",
+    "email": "lukasz@grolik.pl",
+    "url": "https://github.com/lukaszgrolik"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lukaszgrolik/generator-lukaszgrolik-angular.git"
+  },
+  "bugs": "https://github.com/lukaszgrolik/generator-lukaszgrolik-angular/issues",
   "dependencies": {
     "bower-check-updates": "2.0.0-alpha.17",
     "change-case": "2.3.0",
@@ -16,5 +30,10 @@
     "npm-check-updates": "2.0.0-alpha.16",
     "underscore": "1.8.3",
     "yeoman-generator": "0.20.2"
-  }
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
 }
