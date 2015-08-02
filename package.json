@@ -1,6 +1,6 @@
 {
   "name": "generator-lukaszgrolik-angular",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "My personal Yeoman generator for highly automated Gulp driven Angular applications",
   "files": [
     "app",
