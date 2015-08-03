@@ -61,7 +61,6 @@ module.exports = generators.Base.extend({
 
   writing: function () {
     var templates = [
-      '.gitignore',
       'bower.json',
       'gulpfile.js',
       'package.json',
@@ -90,6 +89,13 @@ module.exports = generators.Base.extend({
         data
       );
     }.bind(this));
+
+    // fixes renaming .gitignore to .npmignore after install
+    this.fs.copyTpl(
+      this.templatePath('gitignore'),
+      this.destinationPath('.gitignore'),
+      data
+    );
   },
 
   install: function() {
